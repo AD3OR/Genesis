@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', alpharoutes);
 app.use('/', partroutes);
-app.use('/', dbroutes);
+// app.use('/', dbroutes);
 
 // MySQL connection
 
