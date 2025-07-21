@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const alpharoutes = require('./routes/alpharoutes');
 const partroutes = require('./routes/partroutes');
+const proutes = require('./routes/proutes');
 const dbroutes = require('./routes/dbroutes');
 
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', alpharoutes);
 app.use('/', partroutes);
+app.use('/', proutes)
 // app.use('/', dbroutes);
 
 // MySQL connection

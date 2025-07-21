@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN for graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Asperger's Syndrome</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/style2.css"/>
+  <link rel="stylesheet" href="/css/pstyle.css"/>
+</head>
+
+<body class = "fade-in">
+  <header>
+    <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
+    <h1 style="font-size: 60px;">Genesis</h1>
+  </header>
+  
+  <main>
+    <section class="intro">
+
+  <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-8">
+      <!-- Main Toggle Button -->
+          <button id="mainToggleBtn" class="w-full py-4 px-6 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-green-500 focus:ring-opacity-75 flex items-center justify-center space-x-3 transition-all">
+          <span>Asperger's Syndrome</span>
+          <svg id="mainArrowIcon" class="w-6 h-6 ml-2 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+
+      <!-- Main Content Box - Initially Hidden -->
+      <div id="mainContent" class="hidden transition-all duration-300 ease-in-out overflow-hidden">
+          
+          <p class="text-gray-700 text-lg md:text-xl leading-relaxed text-center mb-8">
+              Asperger's Syndrome is a neurodevelopmental disorder that was formerly a distinct diagnosis but is now considered part of the broader Autism Spectrum Disorder (ASD) in the Diagnostic and Statistical Manual of Mental Disorders (DSM-5). While it's no longer a separate diagnosis, many people and some providers still use the term, often referring to it as "ASD – without intellectual or language impairment" or "high-functioning autism." Individuals with Asperger's typically have average or above-average intelligence and no significant language delays in terms of vocabulary or grammar. However, they experience challenges primarily in social communication and interaction, alongside restricted interests and repetitive behaviors.
+          </p>
+
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-700 text-center mb-8">Fact File</h3>
+
+          <!-- Fact File Sections -->
+          <div id="factSectionsContainer" class="space-y-4">
+              <!-- Section 1: Classification -->
+              <div class="fact-section bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <button class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 transition-all rounded-t-lg">
+                      <span>Classification</span>
+                      <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                  <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                      <ul class="list-disc list-inside space-y-2">
+                          <li><strong>Formerly a distinct diagnosis,</strong> now part of Autism Spectrum Disorder (ASD) in the DSM-5.</li>
+                          <li>Often described as high-functioning ASD or ASD without intellectual or language impairment.</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Section 2: Key Characteristics -->
+              <div class="fact-section bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <button class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 transition-all rounded-t-lg">
+                      <span>Key Characteristics</span>
+                      <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                  <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                      <ul class="list-disc list-inside space-y-2">
+                          <li><strong>Social Communication and Interaction Challenges:</strong>
+                              <ul class="list-circle list-inside ml-6 mt-2 space-y-1">
+                                  <li>Difficulty understanding and using nonverbal cues (eye contact, facial expressions, body language, gestures).</li>
+                                  <li>Challenges with social reciprocity (back-and-back conversation, sharing interests/emotions).</li>
+                                  <li>May struggle to make friends or understand social rules.</li>
+                                  <li>Speech might be unusual (monotone, overly formal, loud, or choppy).</li>
+                                  <li>May "talk at" people rather than "to" them, focusing on their intense interests.</li>
+                              </ul>
+                          </li>
+                          <li><strong>Restricted, Repetitive Patterns of Behavior, Interests, or Activities:</strong>
+                              <ul class="list-circle list-inside ml-6 mt-2 space-y-1">
+                                  <li>Intense, highly focused interests in specific topics.</li>
+                                  <li>Inflexible adherence to routines or rituals; resistance to change.</li>
+                                  <li>Repetitive motor mannerisms (e.g., hand flapping, toe walking).</li>
+                                  <li>Unusual reactions to sensory input (hypersensitivity or hyposensitivity to light, sound, textures, etc.).</li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Section 3: Intelligence -->
+              <div class="fact-section bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <button class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 transition-all rounded-t-lg">
+                      <span>Intelligence</span>
+                      <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                  <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                      <ul class="list-disc list-inside space-y-2">
+                          <li>Typically average or above-average intelligence.</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Section 4: Language Development -->
+              <div class="fact-section bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <button class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 transition-all rounded-t-lg">
+                      <span>Language Development</span>
+                      <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                  <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                      <ul class="list-disc list-inside space-y-2">
+                          <li>Generally no significant delay in spoken or receptive language development (vocabulary, grammar).</li>
+                          <li>However, challenges may exist in the *social use* of language (pragmatics).</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Section 5: Onset -->
+              <div class="fact-section bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <button class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 transition-all rounded-t-lg">
+                      <span>Onset</span>
+                      <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                  <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                      <ul class="list-disc list-inside space-y-2">
+                          <li>Symptoms typically emerge in early childhood.</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Section 6: Causes -->
+              <div class="fact-section bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <button class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 transition-all rounded-t-lg">
+                      <span>Causes</span>
+                      <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                  <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                      <ul class="list-disc list-inside space-y-2">
+                          <li>The exact causes are unknown, but it's believed to involve a combination of genetic and environmental factors.</li>
+                          <li>It is not caused by upbringing or vaccines.</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Section 7: Diagnosis -->
+              <div class="fact-section bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <button class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 transition-all rounded-t-lg">
+                      <span>Diagnosis</span>
+                      <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                  <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                      <ul class="list-disc list-inside space-y-2">
+                          <li>No specific medical tests (like blood tests or imaging scans).</li>
+                          <li>Diagnosis is made through comprehensive assessments by a team of health professionals, observing behavior and gathering information on developmental history and current functioning.</li>
+                          <li>Assessment includes looking at social and emotional abilities, communication skills, learning abilities, movement skills, and special interests.</li>
+                          <li>Can be diagnosed in childhood, though some individuals are diagnosed in adulthood.</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Section 8: Treatment/Support -->
+              <div class="fact-section bg-gray-50 rounded-lg shadow-sm overflow-hidden border border-gray-200">
+                  <button class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-gray-100 hover:bg-gray-200 transition-all rounded-t-lg">
+                      <span>Treatment/Support</span>
+                      <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                  <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                      <ul class="list-disc list-inside space-y-2">
+                          <li>There is no "cure," but various therapies and interventions can help individuals manage symptoms and function to their highest potential.</li>
+                          <li><strong>Common approaches include:</strong>
+                              <ul class="list-circle list-inside ml-6 mt-2 space-y-1">
+                                  <li><strong>Social skills training:</strong> To improve social interaction and understanding of social cues.</li>
+                                  <li><strong>Speech and language therapy:</strong> To address pragmatic language difficulties.</li>
+                                  <li><strong>Cognitive Behavioral Therapy (CBT):</strong> To help manage emotions, anxiety, and repetitive behaviors.</li>
+                                  <li><strong>Occupational therapy:</strong> For sensory integration issues and fine/gross motor skills.</li>
+                                  <li><strong>Physical therapy:</strong> To address motor coordination difficulties.</li>
+                                  <li><strong>Parent/family training and support:</strong> To equip caregivers with strategies.</li>
+                                  <li><strong>Medication:</strong> May be used to treat co-occurring conditions like anxiety, depression, or ADHD.</li>
+                              </ul>
+                          </li>
+                          <li>Treatment is individualized and focuses on building on the individual's strengths while addressing challenges.</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+
+  <!-- Countries & ASD Data Section -->
+        <button id="countryToggleBtn" class="w-full py-4 px-6 mt-8 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 flex items-center justify-center space-x-3 transition-all">
+            <span>View ASD Data by Country</span>
+            <svg id="countryArrowIcon" class="w-6 h-6 ml-2 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+
+        <!-- Country Content Box - Initially Hidden -->
+        <div id="countryContent" class="hidden transition-all duration-300 ease-in-out overflow-hidden">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-700 text-center mb-8">ASD Patients vs. Age by Country (Dummy Data)</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Country 1: USA -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>United States (USA)</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="usaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 2: United Kingdom -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>United Kingdom (UK)</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="ukChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 3: Canada -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Canada</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="canadaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 4: Australia -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Australia</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="australiaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 5: India -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>India</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="indiaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 6: BD -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Bangladesh</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="bangladeshChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Papers Links -->
+            <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+                <h4 class="text-xl font-semibold text-gray-700 mb-4">Further Research:</h4>
+                <ul class="list-none p-0 space-y-2">
+                    <li>
+                        <a href="https://example.com/research-paper-1" target="_blank" class="text-green-600 hover:underline text-sm">
+                            "Understanding Neurodevelopmental Diversity" (Dummy Link)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/research-paper-2" target="_blank" class="text-green-600 hover:underline text-sm">
+                            "Global Perspectives on ASD Diagnosis" (Dummy Link)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/research-paper-3" target="_blank" class="text-green-600 hover:underline text-sm">
+                            "Innovations in Support for Autistic Individuals" (Dummy Link)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- <script src="/js/dbss.js"></script> -->
+
+  <footer>
+    <p>&copy; 2025 Genesis. All rights reserved.</p>
+  </footer>
+  <script src="/js/script.js"></script>
+  <script src="/js/scriptt.js"></script>
+  <script src="/js/pscript.js"></script>
+</body>
+</html>

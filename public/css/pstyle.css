@@ -1,0 +1,91 @@
+
+/* General transition classes */
+.transition-all {
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+.rotate-90 {
+    transform: rotate(90deg);
+}
+.rotate-0 {
+    transform: rotate(0deg);
+}
+
+/* Main content container for both sections */
+.w-full.max-w-4xl {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Asperger's Syndrome Section Styles */
+.content-container {
+    max-width: 800px; /* Limit content width for readability */
+    width: 100%; /* Ensure it takes full width up to max-width */
+    margin: 20px auto; /* Center the block container itself and add vertical margin */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for the content area */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.centered-text {
+    text-align: center;
+    margin-bottom: 20px; /* Space after the paragraph */
+}
+
+.centered-heading {
+    text-align: center;
+    margin-top: 30px; /* Space before the heading */
+    margin-bottom: 20px; /* Space after the heading */
+    color: #333; /* Darker color for headings */
+}
+
+.fact-section {
+    border-radius: 8px; /* Consistent rounded corners */
+}
+
+.fact-toggle {
+    border-bottom-left-radius: 0; /* Remove bottom-left radius when content is visible */
+    border-bottom-right-radius: 0; /* Remove bottom-right radius when content is visible */
+}
+
+/* Styling for the main unordered list */
+.centered-list {
+    list-style-position: inside; /* Puts bullets inside the content flow */
+    text-align: left; /* Keep the actual list items text left-aligned for readability */
+    padding-left: 0; /* Remove default padding from the ul */
+    margin-left: auto; /* Used in conjunction with margin-right: auto and width to center the block */
+    margin-right: auto;
+    max-width: 700px; /* Optional: limit width of list for better centering effect */
+    list-style-type: disc; /* Default bullet style */
+}
+
+/* To center the list itself, but keep text left-aligned for readability: */
+/* For nested lists, ensure they also inherit text-align: left */
+.centered-list ul {
+    list-style-position: inside;
+    text-align: left; /* Ensure nested list items are also left-aligned */
+    margin-left: 20px; /* Indent nested lists */
+    padding-left: 0;
+}
+
+/* Specific styling for list items if needed */
+.centered-list li {
+    margin-bottom: 8px; /* Space between list items */
+}
+
+/* Countries & ASD Data Section Styles */
+.country-card {
+    border-radius: 8px; /* Consistent rounded corners */
+}
+
+.country-toggle {
+    border-bottom-left-radius: 0; /* Remove bottom-left radius when content is visible */
+    border-bottom-right-radius: 0; /* Remove bottom-right radius when content is visible */
+}
+
+/* Ensure canvas takes available space and is responsive */
+canvas {
+    max-width: 100%;
+    height: 250px; /* Fixed height for consistency, Chart.js will scale width */
+}
