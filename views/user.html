@@ -5,25 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Genesis</title>
   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/ustyle.css" />
+  <!-- Chart.js CDN for graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class = "fade-in">
   <header>
-    <div class="profile-image-container">
+    <!-- <div class="profile-image-container">
       <img src="/images/profile.jpg" alt="User Profile" class="profile-image" />
       <a href="user.html" class="profile-button-link">
       <button class="profile-button">User Profile</button>
       </a>
-    </div>
+    </div> -->
 
 
-    <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
-    <h1 style="font-size: 100px;">Genesis</h1>
-    <p>Your journey begins here.</p>
+    <img style = "border-radius: 100%;" src="/images/profile.jpg" alt="User Profile" class="center-image" />
+    <h1 style="font-size: 50px;">Gazi Muhammad Mobasher</h1>
+    <p>Welcome Back</p>
   </header>
+
+  <main>
+    <div class="user-info-container">
+            <section class="stats-section">
+                <h3 class="section-heading">Your Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-item clickable-stat" id="researchTimeStat">
+                        <span class="stat-label">Research Time:</span>
+                        <span class="stat-value">1200 hrs</span>
+                        
+                        <div id="researchTimeGraphContainer" class="hidden chart-display-area">
+                            <canvas id="researchTimeChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Bookmarked Papers:</span>
+                        <span class="stat-value">45</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Reports Edited:</span>
+                        <span class="stat-value">18</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Catalog Entries:</span>
+                        <span class="stat-value">230</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Bookmarked Disorders:</span>
+                        <span class="stat-value">75</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Bookmarked Testcases:</span>
+                        <span class="stat-value">12</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Bookmarked Datasets:</span>
+                        <span class="stat-value">5</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Defects Discovered:</span>
+                        <span class="stat-value">3</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="separator"></div>
+
+            <section class="personal-info-section">
+                <h3 class="section-heading">Personal Information</h3>
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="info-label">Age:</span>
+                        <span class="info-value">[Blank]</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Profession:</span>
+                        <span class="info-value">[Blank]</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">E-mail:</span>
+                        <span class="info-value">[Blank]</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Date Of Birth:</span>
+                        <span class="info-value">[Blank]</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Country:</span>
+                        <span class="info-value">[Blank]</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+  </main>
+
 
   <footer>
     <p>&copy; 2025 Genesis. All rights reserved.</p>
   </footer>
+
+
 <script src="/js/script.js"></script>
+<script src="/js/uscript.js"></script>
 </body>
 </html>

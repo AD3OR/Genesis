@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brachydactyly</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pstyle.css">
+
+</head>
+
+<body class="fade-in">
+
+    <header>
+        <div class="profile-image-container">
+            <img src="/images/profile.jpg" alt="User Profile" class="profile-image" />
+            <a href="user.html" class="profile-button-link">
+                <button class="profile-button">User Profile</button>
+            </a>
+        </div>
+
+        <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
+        <h1 style="font-size: 60px; font-weight: 700;">Genesis</h1>
+        <p>Your journey begins here.</p>
+    </header>
+
+    <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <!-- Main Toggle Button -->
+        <button id="mainToggleBtn"
+            class="w-full py-4 px-6 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 flex items-center justify-center space-x-3 transition-all">
+            <span>Brachydactyly</span>
+            <svg id="mainArrowIcon" class="w-6 h-6 ml-2 transition-transform duration-300 transform rotate-0"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Main Content Box - Initially Hidden -->
+        <div id="mainContent" class="hidden transition-all duration-300 ease-in-out overflow-hidden">
+
+
+            <p class="text-gray-700 text-lg md:text-xl leading-relaxed text-center mb-8">
+                Brachydactyly is a medical term that literally means "short digits" (brachy = short, dactylos =
+                finger/toe). It's a condition characterized by abnormally short fingers and/or toes. It is often
+                inherited and can occur as an isolated anomaly or as part of a more complex syndrome. There are several
+                types of brachydactyly, classified based on which bones of the fingers or toes are shortened. This
+                condition can range in severity and may affect one or multiple digits.
+            </p>
+
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-700 text-center mb-8">Fact File</h3>
+
+            <!-- Fact File Sections -->
+            <div id="factSectionsContainer" class="space-y-4">
+                <!-- Section 1: Classification -->
+                <div class="fact-section bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Classification</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Abnormally short fingers and/or toes.</li>
+                            <li>Can affect one or more digits.</li>
+                            <li>Often inherited, can be isolated or part of a syndrome.</li>
+                            <li>Various types (A1, A2, B, C, D, E) based on affected bones.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 2: Key Characteristics -->
+                <div class="fact-section bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Key Characteristics</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Shortening of phalanges (finger/toe bones) or metacarpals/metatarsals (hand/foot bones).
+                            </li>
+                            <li>Can range from mild (e.g., short thumb) to severe (all digits affected).</li>
+                            <li>May involve specific digits (e.g., middle phalanx of index finger).</li>
+                            <li>Often symmetrical, but can be unilateral.</li>
+                            <li>May be associated with other skeletal abnormalities.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 3: Causes -->
+                <div class="fact-section bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Causes</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Primarily genetic, typically inherited in an autosomal dominant pattern.</li>
+                            <li>Caused by mutations in specific genes involved in bone development (e.g., GDF5, IHH,
+                                PTHLH, HOXD13).</li>
+                            <li>Can occur spontaneously (de novo mutation).</li>
+                            <li>Can be a feature of broader genetic syndromes (e.g., Down syndrome, Apert syndrome,
+                                Rubinstein-Taybi syndrome).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Diagnosis -->
+                <div class="fact-section bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Diagnosis</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Clinical examination (visual inspection, measurement of digits).</li>
+                            <li>X-rays to confirm bone shortening and identify affected bones.</li>
+                            <li>Family history assessment.</li>
+                            <li>Genetic testing may be performed to identify specific gene mutations, especially if part
+                                of a syndrome.</li>
+                            <li>Often diagnosed at birth or in early childhood.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 5: Treatment/Support -->
+                <div class="fact-section bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="fact-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-gray-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Treatment/Support</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="fact-content hidden p-4 md:p-5 text-gray-700 leading-relaxed">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>No specific "cure" for the genetic condition itself.</li>
+                            <li>Treatment is usually not medically necessary unless there's functional impairment or
+                                significant cosmetic concern.</li>
+                            <li><strong>Common approaches include:</strong>
+                                <ul class="list-circle list-inside ml-6 mt-2 space-y-1">
+                                    <li><strong>Occupational/Physical Therapy:</strong> To improve hand/foot function if
+                                        mobility is affected.</li>
+                                    <li><strong>Surgery:</strong> Rarely considered, primarily for functional
+                                        improvement (e.g., increasing grip) or significant cosmetic reasons. More common
+                                        in severe cases or when associated with other deformities.</li>
+                                    <li><strong>Genetic Counseling:</strong> Important for affected individuals and
+                                        families to understand inheritance patterns and recurrence risks.</li>
+                                    <li>Focus on adaptation and maximizing function.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countries & Data Section -->
+        <button id="countryToggleBtn"
+            class="w-full py-4 px-6 mt-8 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 flex items-center justify-center space-x-3 transition-all">
+            <span>View Brachydactyly Data by Country</span>
+            <svg id="countryArrowIcon" class="w-6 h-6 ml-2 transition-transform duration-300 transform rotate-0"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Country Content Box - Initially Hidden -->
+        <div id="countryContent" class="hidden transition-all duration-300 ease-in-out overflow-hidden">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-700 text-center mb-8">Brachydactyly Prevalence by
+                Country (Dummy Data)</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Country 1: USA -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>United States (USA)</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="usaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 2: United Kingdom -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>United Kingdom (UK)</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="ukChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 3: Canada -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Canada</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="canadaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 4: Australia -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Australia</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="australiaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 5: India -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>India</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="indiaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 6: Bangladesh -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Bangladesh</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="bangladeshChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Papers Links -->
+            <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+                <h4 class="text-xl font-semibold text-gray-700 mb-4">Applied Research:</h4>
+                <ul class="list-none p-0 space-y-2">
+                    <li>
+                        <a href="https://example.com/brachydactyly-paper-1" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "Genetic Basis of Brachydactyly: A Review" (Dummy Link)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/brachydactyly-paper-2" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "Clinical Spectrum and Classification of Short Digit Anomalies" (Dummy Link)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/brachydactyly-paper-3" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "Management Strategies for Functional Impairment in Brachydactyly" (Dummy Link)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <footer>
+        <p>&copy; 2025 Genesis. All rights reserved.</p>
+    </footer>
+    <script src="/js/script.js"></script>
+    <script src="/js/scriptt.js"></script>
+    <script src="/js/pscript2.js"></script>
+</body>
+
+</html>

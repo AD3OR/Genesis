@@ -28,6 +28,11 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
 }
 
+.w-full.max-w-4xl {
+    box-sizing: border-box;
+    margin: 0 auto; /* Add this line */
+}
+
 .centered-text {
     text-align: center;
     margin-bottom: 20px; /* Space after the paragraph */
