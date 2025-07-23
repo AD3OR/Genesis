@@ -2,3 +2,84 @@
 table { border-collapse: collapse; width: 60%; margin: 0 auto;}
 th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
 th { background-color: #f2f2f2; }
+
+.stats-overview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f0fdf4; /* Very light green background */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    /* ADDED/MODIFIED: Border for the main container */
+    border: 2px solid #34d399; /* Green-400 border */
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    width: 200px;
+    min-width: 180px;
+    text-align: center;
+    border: 1px solid #a7f3d0; /* Green-200 border */
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon-circle {
+    width: 70px;
+    height: 70px;
+    background-color: #10b981; /* A nice shade of green */
+    border-radius: 50%; /* Make it a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.stat-logo {
+    font-size: 36px; /* Size of the emoji/logo inside the circle */
+    color: #fff; /* White color for the logo */
+}
+
+.stat-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.stat-text:hover {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00c14d;
+    margin: 0;
+}
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .stats-overview-container {
+        flex-direction: column; /* Stack cards vertically on small screens */
+        align-items: center; /* Center stacked cards */
+        gap: 20px;
+    }
+
+    .stat-card {
+        width: 80%; /* Make cards take more width on small screens */
+        max-width: 300px;
+    }
+}
