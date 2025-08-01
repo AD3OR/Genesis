@@ -49,7 +49,10 @@ body::before {
 header {
   text-align: center;
   padding: 60px 0px 30px;
-  background: linear-gradient(135deg, #1d8600, #3ea200);
+  background: linear-gradient(135deg, rgba(29, 134, 0, 0.7), rgba(62, 162, 0, 0.7)), url('/images/headerimg.jpg');
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat; 
   color: white;
   width: 100%;
   box-sizing: border-box;
@@ -65,7 +68,6 @@ header p {
   opacity: 0.9;
 }
 
-/* Main Section */
 main .intro {
   max-width: 700px;
   margin: 40px auto;

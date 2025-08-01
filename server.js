@@ -1,5 +1,5 @@
 const express = require('express');
-// const mysql = require('mysql2/promise');
+const mysql = require('mysql2/promise');
 const path = require('path');
 
 const app = express();
@@ -18,36 +18,36 @@ app.use('/', alpharoutes);
 app.use('/', partroutes);
 app.use('/', proutes);
 app.use('/', uroutes);
-// app.use('/', dbroutes);
+app.use('/', dbroutes);
 
 // MySQL connection
 
 
-// let db;
-// async function connectDB() {
-//   try {
-//     db = await mysql.createConnection({
-//       host: 'localhost',
-//       user: 'root', // change if needed
-//       password: '12341234', // set in installer
-//       database: 'genesis_db'
-//     });
-//     console.log('Connected to MySQL successfully!');
-//   } catch (error) {
-//     console.error('MySQL connection error:', error);
-//   }
-// }
-// connectDB();
+let db;
+async function connectDB() {
+  try {
+    db = await mysql.createConnection({
+      host: 'localhost',
+      user: 'root', // change if needed
+      password: '12341234', // set in installer
+      database: 'genesis_db'
+    });
+    console.log('Connected to MySQL successfully!');
+  } catch (error) {
+    console.error('MySQL connection error:', error);
+  }
+}
+connectDB();
 
 
-// app.get('/users', async (req, res) => {
-//   try {
-//     const [rows] = await db.query('SELECT * FROM users');
-//     res.json(rows);
-//   } catch (err) {
-//     res.status(500).json({ error: 'Failed to fetch users' });
-//   }
-// });
+app.get('/users', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM users');
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
