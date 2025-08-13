@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autism Dataset</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/aut.css">
+</head>
+
+<body class="fade-in">
+  <!-- Header -->
+  <header>
+    <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
+    <h1>Autism Dataset</h1>
+    
+  </header>
+
+  <!-- Main content -->
+  <main class="intro">
+    <section>
+      <table id="autismTable" class="styled-table">
+        <thead>
+          <tr id="headerRow"></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Genesis. All rights reserved.</p>
+  </footer>
+
+  <!-- Script to load dataset -->
+  <script>
+    fetch('/autism')
+      .then(res => res.json())
+      .then(data => {
+        const headerRow = document.getElementById('headerRow');
+        const tbody = document.querySelector('#autismTable tbody');
+
+        headerRow.innerHTML = '';
+        tbody.innerHTML = '';
+
+        // Headers
+        if (data.attributes && data.attributes.length > 0) {
+          data.attributes.forEach(attr => {
+            const th = document.createElement('th');
+            th.textContent = attr[0];
+            headerRow.appendChild(th);
+          });
+        }
+
+        // Rows
+        if (data.data && data.data.length > 0) {
+          data.data.forEach(row => {
+            const tr = document.createElement('tr');
+            row.forEach(cell => {
+              const td = document.createElement('td');
+              td.textContent = cell;
+              tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+          });
+        }
+      })
+      .catch(err => console.error('Error loading dataset:', err));
+  </script>
+</body>
+</html>
