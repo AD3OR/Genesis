@@ -20,12 +20,14 @@
   <!-- Main content -->
   <main class="intro">
     <section>
-      <table id="autismTable" class="styled-table">
-        <thead>
-          <tr id="headerRow"></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div class="table-wrapper">
+        <table id="autismTable" class="styled-table">
+          <thead>
+            <tr id="headerRow"></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </section>
   </main>
 
@@ -49,7 +51,7 @@
         if (data.attributes && data.attributes.length > 0) {
           data.attributes.forEach(attr => {
             const th = document.createElement('th');
-            th.textContent = attr[0];
+            th.textContent = attr;
             headerRow.appendChild(th);
           });
         }

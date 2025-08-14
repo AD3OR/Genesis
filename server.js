@@ -1,7 +1,6 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
 const path = require('path');
-
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,14 +9,12 @@ const partroutes = require('./routes/partroutes');
 const proutes = require('./routes/proutes');
 const uroutes = require('./routes/uroutes');
 const dbroutes = require('./routes/dbroutes');
-const fs = require('fs');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Raw JSON imported from ORPHADATA
-
 app.get('/disorders', (req, res) => {
   const filePath = path.join(__dirname, 'orphararedata.json');
 
@@ -44,7 +41,6 @@ app.get('/disorders', (req, res) => {
     }
   });
 });
-
 // End
 
 // reading arff (converted to txt)
@@ -78,53 +74,20 @@ app.get('/autism', (req, res) => {
 });
 // end
 
-
 app.use('/', alpharoutes);
 app.use('/', partroutes);
 app.use('/', proutes);
 app.use('/', uroutes);
 app.use('/', dbroutes);
 
-// MySQL connection
-
-
-let db;
-async function connectDB() {
-  try {
-    db = await mysql.createConnection({
-      host: 'localhost',
-      user: 'root', // change if needed
-      password: '12341234', // set in installer
-      database: 'genesis_db'
-    });
-    console.log('Connected to MySQL successfully!');
-  } catch (error) {
-    console.error('MySQL connection error:', error);
-  }
-}
-connectDB();
-
-
-app.get('/users', async (req, res) => {
-  try {
-    const [rows] = await db.query('SELECT * FROM users');
-    res.json(rows);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch users' });
-  }
-});
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-
-app.get('/aut.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'aut.html'));
+app.get('/asperger.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'asperger.html'));
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-
