@@ -8,7 +8,7 @@ const alpharoutes = require('./routes/alpharoutes');
 const partroutes = require('./routes/partroutes');
 const proutes = require('./routes/proutes');
 const uroutes = require('./routes/uroutes');
-const dbroutes = require('./routes/dbroutes');
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,6 +32,67 @@ app.get('/disorders', (req, res) => {
       const formatted = disorders.map(d => ({
         id: d.ORPHAcode,
         name: d["Preferred term"]
+      })).filter(d => d.id && d.name);
+
+      res.json(formatted);
+    } catch (parseErr) {
+      console.error('Error parsing JSON:', parseErr);
+      res.status(500).json({ error: 'Invalid JSON format' });
+    }
+  });
+});
+// End
+
+// Raw JSON Imported from ORPHAGENES
+app.get('/genes', (req, res) => {
+  // Use the correct filename for the gene data
+  const filePath = path.join(__dirname, 'orphagenes.json');
+
+  // Read the JSON file
+  fs.readFile(filePath, 'utf-8', (err, jsonData) => {
+    // Check for errors during file reading
+    if (err) {
+      console.error('Error reading JSON:', err);
+      return res.status(500).json({ error: 'Failed to read gene data' });
+    }
+
+    try {
+      const parsed = JSON.parse(jsonData);
+      const genes = parsed.data?.results || [];
+      const formatted = genes.map(g => ({
+        id: g.HGNC,
+        name: g.name,
+        symbol: g.symbol
+      })).filter(g => g.id && g.name && g.symbol);
+
+      res.json(formatted);
+    } catch (parseErr) {
+
+      console.error('Error parsing JSON:', parseErr);
+      res.status(500).json({ error: 'Invalid JSON format' });
+    }
+  });
+});
+// end
+
+// Raw JSON Imported from ORPHAPHENOTYPES
+app.get('/phenotypes', (req, res) => {
+  const filePath = path.join(__dirname, 'orphaphenotype.json');
+
+  fs.readFile(filePath, 'utf-8', (err, jsonData) => {
+    if (err) {
+      console.error('Error reading JSON:', err);
+      return res.status(500).json({ error: 'Failed to read disorder data' });
+    }
+
+    try {
+      const parsed = JSON.parse(jsonData);
+      const phenotypes = parsed.data?.results || [];
+
+      // Only send id and name
+      const formatted = phenotypes.map(d => ({
+        id: d.HPOId,
+        name: d["HPOTerm"]
       })).filter(d => d.id && d.name);
 
       res.json(formatted);
@@ -74,11 +135,40 @@ app.get('/autism', (req, res) => {
 });
 // end
 
+// Reading RESEARCHERS
+app.get('/researchers', (req, res) => {
+  const filePath = path.join(__dirname, 'researchers.json');
+
+  fs.readFile(filePath, 'utf-8', (err, jsonData) => {
+    if (err) {
+      console.error('Error reading JSON:', err);
+      return res.status(500).json({ error: 'Failed to read researcher data' });
+    }
+
+    try {
+      const parsed = JSON.parse(jsonData);
+
+      const formatted = parsed.map(d => ({
+        id: d.id,
+        name: d.name
+      })).filter(d => d.id && d.name);
+
+      res.json(formatted);
+    } catch (parseErr) {
+      console.error('Error parsing JSON:', parseErr);
+      res.status(500).json({ error: 'Invalid JSON format' });
+    }
+  });
+});
+
+// end
+
+
 app.use('/', alpharoutes);
 app.use('/', partroutes);
 app.use('/', proutes);
 app.use('/', uroutes);
-app.use('/', dbroutes);
+
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -86,6 +176,14 @@ app.get('/', (req, res) => {
 
 app.get('/asperger.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'asperger.html'));
+});
+
+app.get('/aspergerr.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'aspergerr.html'));
+});
+
+app.get('/login.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
 
 app.listen(PORT, () => {

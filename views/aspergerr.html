@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asperger</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pstyle.css">
+</head>
+
+<body class="fade-in">
+
+    <header>
+        <div class="profile-image-container">
+            <img src="/images/profile.jpg" alt="User Profile" class="profile-image" />
+            <a href="user.html" class="profile-button-link">
+                <button class="profile-button">User Profile</button>
+            </a>
+        </div>
+
+        <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
+        <h1 style="font-size: 60px; font-weight: 700;">Asperger / Autism</h1>
+    </header>
+
+    <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <!-- Main Toggle Button -->
+        <button id="mainToggleBtn"
+            class="w-full py-4 px-6 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 flex items-center justify-center space-x-3 transition-all">
+            <span>Asperger / Autism</span>
+            <svg id="mainArrowIcon" class="w-6 h-6 ml-2 transition-transform duration-300 transform rotate-0"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Main Content Box - Initially Hidden -->
+        <div id="mainContent" class="hidden transition-all duration-300 ease-in-out overflow-hidden">
+            <p class="text-gray-700 text-lg md:text-xl leading-relaxed text-center mb-8">
+                Autism is a developmental condition that affects how a person communicates, interacts, and experiences
+                the world around them. It is often referred to as Autism Spectrum Disorder (ASD) because symptoms and
+                their severity can vary widely among individuals. Common features include challenges with social
+                interaction, differences in communication, and repetitive behaviors or interests. Autism is typically
+                present from early childhood and is influenced by a combination of genetic and environmental factors.
+                While it is lifelong, many people with autism develop strategies and skills that help them thrive.
+            </p>
+        </div>
+
+        <!-- Countries & Data Section -->
+        <button id="countryToggleBtn"
+            class="w-full py-4 px-6 mt-8 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 flex items-center justify-center space-x-3 transition-all">
+            <span>View Autism Data by Country</span>
+            <svg id="countryArrowIcon" class="w-6 h-6 ml-2 transition-transform duration-300 transform rotate-0"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- Country Content Box - Initially Hidden -->
+        <div id="countryContent" class="hidden transition-all duration-300 ease-in-out overflow-hidden">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-700 text-center mb-8">Autism Prevalence by
+                Country (Dummy Data)</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Country 1: USA -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>United States (USA)</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="usaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 2: United Kingdom -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>United Kingdom (UK)</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="ukChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 3: Canada -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Canada</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="canadaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 4: Australia -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Australia</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="australiaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 5: India -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>India</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="indiaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Country 6: Bangladesh -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>Bangladesh</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="bangladeshChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Papers Links -->
+            <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+                <h4 class="text-xl font-semibold text-gray-700 mb-4">Research Links</h4>
+                <ul class="list-none p-0 space-y-2">
+                    <li>
+                        <a href="https://example.com/autism-paper-1" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "Daily Life of Patients through an Asperger Lens"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/autism-paper-2" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "ASM-5 Anomaly Analysis through In-Depth Survey"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/autism-paper-3" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "Autism Spectrum Disorders In Enlisted Form And Detailed Analysis"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/autism-paper-4" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "Autism Across the Lifespan: Organized Overview and Deep Analysis"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/autism-paper-4" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "From Early Signs to Adult Life: Autism"
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://example.com/autism-paper-4" target="_blank"
+                            class="text-green-600 hover:underline text-sm">
+                            "Sensory and Cognitive Dimensions of Autism: Organized Analysis"
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Research Datasets Links -->
+            <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+                <h4 class="text-xl font-semibold text-gray-700 mb-4">Dataset Links</h4>
+                <ul class="list-none p-0 space-y-2">
+                    <li>
+                        <a href="asperger.html" class="text-green-600 hover:underline text-sm">
+                            Autism Dataset A
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <footer>
+        <p>&copy; 2025 Genesis. All rights reserved.</p>
+    </footer>
+    <script src="/js/script.js"></script>
+    <script src="/js/scriptt.js"></script>
+    <script src="/js/pscript2.js"></script>
+</body>
+
+</html>

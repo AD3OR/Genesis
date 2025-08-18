@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    table { border-collapse: collapse; width: 60%; margin: 0 auto; }
+    th, td { border: 1px solid #ccc; padding: 10px; }
+    th { background-color: #f2f2f2; }
+    h1 { text-align: center; }
+  </style>
+
+  <title>Researchers</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/style2.css"/>
+  <link rel="stylesheet" href="/css/pstyle.css"/>
+  <link rel="stylesheet" href="/css/aut.css" />
+</head>
+
+<body class = "fade-in">
+  <header>
+    <div class="profile-image-container">
+      <img src="/images/profile.jpg" alt="User Profile" class="profile-image" />
+      <a href="user.html" class="profile-button-link">
+      <button class="profile-button">User Profile</button>
+      </a>
+    </div>
+
+    <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
+    <h1 style="font-size: 60px;">Researchers</h1>
+  </header>
+
+  <br></br>
+  <table id="disorderTable" class="styled-table">
+    <thead>
+      <tr><th>ID</th><th>Name</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    fetch('/researchers')
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.querySelector('#disorderTable tbody');
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${item.id}</td><td>${item.name}</td>`;
+          tbody.appendChild(row);
+        });
+      })
+      .catch(err => console.error('Error loading disorders:', err));
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Genesis. All rights reserved.</p>
+  </footer>
+  <script src="/js/script.js"></script>
+  <!-- <script src="/js/scriptt.js"></script>
+  <script src="/js/pscript.js"></script> -->
+</body>
+</html>

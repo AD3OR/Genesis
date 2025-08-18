@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Genesis — Login</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link rel="stylesheet" href="/css/pstyle.css" />
+    <style>
+        body.login-page {
+            background: url('/images/mutation.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        body.login-page::before {
+            display: none;
+            /* remove the overlay pseudo-element */
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 120px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            animation: fadeInOnly 1s ease-out forwards;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #248900;
+            font-size: 1.8rem;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .login-container input:focus {
+            border-color: #34d399;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #34d399;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background-color: #00a86b;
+        }
+
+        .login-footer {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .login-footer a {
+            color: #248900;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background-color: #34d399;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #00a86b;
+        }
+    </style>
+</head>
+
+<body class="login-page fade-in">
+    <div class="login-container">
+        <h2>Login to Genesis</h2>
+        <div>
+            <input type="text" placeholder="Username" />
+            <input type="password" placeholder="Password" />
+            <a href="user.html" class="login-btn">Login</a>
+        </div>
+        <div class="login-footer">
+            <p>Don't have an account? Sign up</p>
+        </div>
+    </div>
+</body>
+
+</html>

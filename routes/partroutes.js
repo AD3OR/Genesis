@@ -11,6 +11,9 @@ router.get('/Chest', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/chest.html'));
 });
 
+router.get('/res.html', (req, res) => {
+  res.sendFile(path.join(__dirname, '../views/res.html'));
+});
 
 
 module.exports = router;
