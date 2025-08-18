@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Genesis</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="/css/ustyle.css" />
-  <!-- Chart.js CDN for graphs -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Genesis</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/ustyle.css" />
+    <!-- Chart.js CDN for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class = "fade-in">
-  <header>
-    <div class="profile-image-container">
-      <img src="/images/home.jpg" alt="Home Button" class="profile-image" />
-      <a href="/" class="profile-button-link">
-      <button class="profile-button">User Profile</button>
-      </a>
-    </div>
+
+<body class="fade-in">
+    <header>
+        <div class="profile-image-container">
+            <img src="/images/home.jpg" alt="Home Button" class="profile-image" />
+            <a href="/" class="profile-button-link">
+                <button class="profile-button">User Profile</button>
+            </a>
+        </div>
 
 
-    <img style = "border-radius: 100%;" src="/images/profile.jpg" alt="User Profile" class="center-image" />
-    <h1 style="font-size: 50px;">Gazi Muhammad Mobasher</h1>
-    <p>Welcome Back</p>
-  </header>
+        <img style="border-radius: 100%;" src="/images/profile.jpg" alt="User Profile" class="center-image" />
+        <h1 style="font-size: 50px;">Gazi Muhammad Mobasher</h1>
+        <p>Welcome Back</p>
+    </header>
 
-  <main>
-    <div class="user-info-container">
+    <main>
+        <div class="user-info-container">
             <section class="stats-section">
                 <h3 class="section-heading">Your Statistics</h3>
                 <div class="stats-grid">
                     <div class="stat-item clickable-stat" id="researchTimeStat">
                         <span class="stat-label">Research Time:</span>
                         <span class="stat-value">1200 hrs</span>
-                        
+
                         <div id="researchTimeGraphContainer" class="hidden chart-display-area">
                             <canvas id="researchTimeChart"></canvas>
                         </div>
@@ -49,9 +51,14 @@
                         <span class="stat-label">Catalog Entries:</span>
                         <span class="stat-value">230</span>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item dropdown" id="bookmarkedDisordersStat">
                         <span class="stat-label">Bookmarked Disorders:</span>
-                        <span class="stat-value">75</span>
+                        <span class="stat-value">0</span>
+
+                        <!-- Dropdown menu (initially hidden) -->
+                        <div class="dropdown-menu hidden">
+                            <ul id="bookmarkedDisordersList"></ul>
+                        </div>
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">Bookmarked Testcases:</span>
@@ -97,15 +104,54 @@
             </section>
         </div>
 
-  </main>
+    </main>
 
 
-  <footer>
-    <p>&copy; 2025 Genesis. All rights reserved.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 Genesis. All rights reserved.</p>
+    </footer>
 
+    <script src="/js/utils.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/uscript.js"></script>
+    
+    <script>
+        function formatTime(seconds) {
+            let h = Math.floor(seconds / 3600);
+            let m = Math.floor((seconds % 3600) / 60);
+            let s = seconds % 60;
 
-<script src="/js/script.js"></script>
-<script src="/js/uscript.js"></script>
+            return (
+                String(h).padStart(2, "0") + ":" +
+                String(m).padStart(2, "0") + ":" +
+                String(s).padStart(2, "0")
+            );
+        }
+
+        function updateStats() {
+            const time = parseInt(localStorage.getItem("researchTime"), 10) || 0;
+            document.querySelector("#researchTimeStat .stat-value").textContent = formatTime(time);
+
+            document.querySelector(".stat-item:nth-child(5) .stat-value").textContent =
+                localStorage.getItem("bookmarkedDisorders") || 0;
+
+            document.querySelector(".stat-item:nth-child(8) .stat-value").textContent =
+                localStorage.getItem("defectsDiscovered") || 0;
+
+            document.querySelector(".stat-item:nth-child(7) .stat-value").textContent =
+                localStorage.getItem("bookmarkedDatasets") || 0;
+        }
+
+        setInterval(() => {
+            let time = parseInt(localStorage.getItem("researchTime"), 10) || 0;
+            time++;
+            localStorage.setItem("researchTime", time);
+            updateStats();
+        }, 1000);
+
+        updateStats();
+    </script>
+
 </body>
+
 </html>

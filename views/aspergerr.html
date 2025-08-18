@@ -25,6 +25,10 @@
 
         <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
         <h1 style="font-size: 60px; font-weight: 700;">Asperger / Autism</h1>
+        <button id="bookmarkDisorderBtn"
+            class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700">
+            ⭐ Bookmark This Disorder
+        </button>
     </header>
 
     <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-8">
@@ -227,5 +231,56 @@
     <script src="/js/scriptt.js"></script>
     <script src="/js/pscript2.js"></script>
 </body>
+
+<script>
+    // Increment defects discovered on page load
+    let discovered = parseInt(localStorage.getItem("defectsDiscovered"), 10) || 0;
+    localStorage.setItem("defectsDiscovered", discovered + 1);
+
+    const disorderKey = "asperger_disorder"; // unique ID for this page
+    const btn = document.getElementById("bookmarkDisorderBtn");
+
+    function updateButton() {
+        if (localStorage.getItem(disorderKey) === "true") {
+            btn.textContent = "★ Unbookmark Disorder";
+        } else {
+            btn.textContent = "⭐ Bookmark This Disorder";
+        }
+    }
+
+    btn.addEventListener("click", () => {
+        let bookmarkedCount = parseInt(localStorage.getItem("bookmarkedDisorders"), 10) || 0;
+
+        if (localStorage.getItem(disorderKey) === "true") {
+            localStorage.removeItem(disorderKey);
+            localStorage.setItem("bookmarkedDisorders", bookmarkedCount - 1);
+        } else {
+            localStorage.setItem(disorderKey, "true");
+            localStorage.setItem("bookmarkedDisorders", bookmarkedCount + 1);
+        }
+        updateButton();
+    });
+
+    updateButton();
+
+    function toggleBookmarkDisorder(name, url) {
+        let disorders = JSON.parse(localStorage.getItem("bookmarkedDisordersList") || "[]");
+
+        const index = disorders.findIndex(d => d.url === url);
+
+        if (index === -1) {
+            // Add bookmark
+            disorders.push({ name, url });
+        } else {
+            // Remove bookmark
+            disorders.splice(index, 1);
+        }
+
+        localStorage.setItem("bookmarkedDisordersList", JSON.stringify(disorders));
+        updateStats();
+    }
+
+</script>
+
 
 </html>

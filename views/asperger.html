@@ -14,7 +14,10 @@
   <header>
     <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
     <h1>Autism Dataset A</h1>
-    
+    <button id="bookmarkDatasetBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">
+      📂 Bookmark This Dataset
+    </button>
+
   </header>
 
   <!-- Main content -->
@@ -71,5 +74,36 @@
       })
       .catch(err => console.error('Error loading dataset:', err));
   </script>
+  <script>
+    const datasetKey = "autism_dataset_a"; // unique ID for this dataset
+    const btn = document.getElementById("bookmarkDatasetBtn");
+
+    function updateDatasetBtn() {
+      if (localStorage.getItem(datasetKey) === "true") {
+        btn.textContent = "📂 Unbookmark Dataset";
+      } else {
+        btn.textContent = "📂 Bookmark This Dataset";
+      }
+    }
+
+    btn.addEventListener("click", () => {
+      let count = parseInt(localStorage.getItem("bookmarkedDatasets"), 10) || 0;
+
+      if (localStorage.getItem(datasetKey) === "true") {
+        localStorage.removeItem(datasetKey);
+        localStorage.setItem("bookmarkedDatasets", count - 1);
+      } else {
+        localStorage.setItem(datasetKey, "true");
+        localStorage.setItem("bookmarkedDatasets", count + 1);
+      }
+      updateDatasetBtn();
+    });
+
+    updateDatasetBtn();
+  </script>
+
+
+
 </body>
+
 </html>
