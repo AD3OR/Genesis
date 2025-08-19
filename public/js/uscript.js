@@ -93,28 +93,28 @@ researchTimeStat.addEventListener('click', () => {
 });
 
 function updateStats() {
-  const time = parseInt(localStorage.getItem("researchTime"), 10) || 0;
-  document.querySelector("#researchTimeStat .stat-value").textContent = formatTime(time);
+    const time = parseInt(localStorage.getItem("researchTime"), 10) || 0;
+    document.querySelector("#researchTimeStat .stat-value").textContent = formatTime(time);
 
-  // Bookmarked Disorders Count
-  const disorders = JSON.parse(localStorage.getItem("bookmarkedDisordersList") || "[]");
-  document.querySelector("#bookmarkedDisordersStat .stat-value").textContent = disorders.length;
+    // Bookmarked Disorders Count
+    const disorders = JSON.parse(localStorage.getItem("bookmarkedDisordersList") || "[]");
+    document.querySelector("#bookmarkedDisordersStat .stat-value").textContent = disorders.length;
 
-  // Populate dropdown links
-  const listEl = document.getElementById("bookmarkedDisordersList");
-  listEl.innerHTML = "";
-  disorders.forEach(d => {
-    const li = document.createElement("li");
-    li.innerHTML = `<a href="${d.url}">${d.name}</a>`;
-    listEl.appendChild(li);
-  });
+    // Populate dropdown links
+    const listEl = document.getElementById("bookmarkedDisordersList");
+    listEl.innerHTML = "";
+    disorders.forEach(d => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="${d.url}">${d.name}</a>`;
+        listEl.appendChild(li);
+    });
 
-  // Defects
-  document.querySelector(".stat-item:nth-child(8) .stat-value").textContent =
-    localStorage.getItem("defectsDiscovered") || 0;
+    // Defects
+    document.getElementById("defectsDiscoveredValue").textContent =
+        Number(sessionStorage.getItem("defectsDiscovered")) || 0;
 
-  // Datasets
-  document.querySelector(".stat-item:nth-child(7) .stat-value").textContent =
-    localStorage.getItem("bookmarkedDatasets") || 0;
+    // Datasets
+    document.querySelector(".stat-item:nth-child(7) .stat-value").textContent =
+        localStorage.getItem("bookmarkedDatasets") || 0;
 }
 

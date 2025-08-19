@@ -223,7 +223,7 @@
         </div>
     </div>
 
-    <!-- Link to the external JavaScript file -->
+
     <footer>
         <p>&copy; 2025 Genesis. All rights reserved.</p>
     </footer>
@@ -233,11 +233,28 @@
 </body>
 
 <script>
-    // Increment defects discovered on page load
-    let discovered = parseInt(localStorage.getItem("defectsDiscovered"), 10) || 0;
-    localStorage.setItem("defectsDiscovered", discovered + 1);
+    (function () {
+        const KEY = "defectsDiscovered";
 
-    const disorderKey = "asperger_disorder"; // unique ID for this page
+        try {
+            
+            const next = (Number(sessionStorage.getItem(KEY)) || 0) + 1;
+
+            
+            sessionStorage.setItem(KEY, String(next));
+
+            
+            const el = document.getElementById("defectsDiscoveredValue");
+            if (el) el.textContent = next;
+
+            // Debug
+            console.log("Defects Discovered (session):", next);
+        } catch (e) {
+            console.warn("Session storage not available:", e);
+        }
+    })();
+
+    const disorderKey = "asperger_disorder";
     const btn = document.getElementById("bookmarkDisorderBtn");
 
     function updateButton() {
@@ -252,16 +269,25 @@
         let bookmarkedCount = parseInt(localStorage.getItem("bookmarkedDisorders"), 10) || 0;
 
         if (localStorage.getItem(disorderKey) === "true") {
+
             localStorage.removeItem(disorderKey);
-            localStorage.setItem("bookmarkedDisorders", bookmarkedCount - 1);
+            localStorage.setItem("bookmarkedDisorders", Math.max(0, bookmarkedCount - 1));
+
+
+            toggleBookmarkDisorder("Asperger / Autism", "aspergerr.html");
         } else {
+
             localStorage.setItem(disorderKey, "true");
             localStorage.setItem("bookmarkedDisorders", bookmarkedCount + 1);
+
+
+            toggleBookmarkDisorder("Asperger / Autism", "aspergerr.html");
         }
         updateButton();
     });
 
     updateButton();
+
 
     function toggleBookmarkDisorder(name, url) {
         let disorders = JSON.parse(localStorage.getItem("bookmarkedDisordersList") || "[]");
@@ -277,9 +303,8 @@
         }
 
         localStorage.setItem("bookmarkedDisordersList", JSON.stringify(disorders));
-        updateStats();
+        // updateStats?.(); 
     }
-
 </script>
 
 

@@ -82,23 +82,23 @@
                 <div class="info-list">
                     <div class="info-item">
                         <span class="info-label">Age:</span>
-                        <span class="info-value">[Blank]</span>
+                        <span class="info-value">23</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Profession:</span>
-                        <span class="info-value">[Blank]</span>
+                        <span class="info-value">Student</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">E-mail:</span>
-                        <span class="info-value">[Blank]</span>
+                        <span class="info-value">gazimobassher@gmail.com</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Date Of Birth:</span>
-                        <span class="info-value">[Blank]</span>
+                        <span class="info-value">26/07/2001</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Country:</span>
-                        <span class="info-value">[Blank]</span>
+                        <span class="info-value">Bangladesh</span>
                     </div>
                 </div>
             </section>
@@ -114,7 +114,7 @@
     <script src="/js/utils.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/uscript.js"></script>
-    
+
     <script>
         function formatTime(seconds) {
             let h = Math.floor(seconds / 3600);
@@ -135,8 +135,8 @@
             document.querySelector(".stat-item:nth-child(5) .stat-value").textContent =
                 localStorage.getItem("bookmarkedDisorders") || 0;
 
-            document.querySelector(".stat-item:nth-child(8) .stat-value").textContent =
-                localStorage.getItem("defectsDiscovered") || 0;
+            document.getElementById("defectsDiscoveredValue").textContent =
+                Number(sessionStorage.getItem("defectsDiscovered")) || 0;
 
             document.querySelector(".stat-item:nth-child(7) .stat-value").textContent =
                 localStorage.getItem("bookmarkedDatasets") || 0;
