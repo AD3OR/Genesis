@@ -20,7 +20,6 @@
             </a>
         </div>
 
-
         <img style="border-radius: 100%;" src="/images/profile.jpg" alt="User Profile" class="center-image" />
         <h1 style="font-size: 50px;">Gazi Muhammad Mobasher</h1>
         <p>Welcome Back</p>
@@ -33,7 +32,7 @@
                 <div class="stats-grid">
                     <div class="stat-item clickable-stat" id="researchTimeStat">
                         <span class="stat-label">Research Time:</span>
-                        <span class="stat-value">1200 hrs</span>
+                        <span class="stat-value">00:00:00</span>
 
                         <div id="researchTimeGraphContainer" class="hidden chart-display-area">
                             <canvas id="researchTimeChart"></canvas>
@@ -70,7 +69,7 @@
                     </div>
                     <div class="stat-item">
                         <span class="stat-label">Defects Discovered:</span>
-                        <span class="stat-value">3</span>
+                        <span class="stat-value" id="defectsDiscoveredValue">0</span>
                     </div>
                 </div>
             </section>
@@ -103,55 +102,22 @@
                 </div>
             </section>
         </div>
-
     </main>
-
 
     <footer>
         <p>&copy; 2025 Genesis. All rights reserved.</p>
     </footer>
 
+    <!-- Keep JS minimal here -->
     <script src="/js/utils.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/uscript.js"></script>
 
     <script>
-        function formatTime(seconds) {
-            let h = Math.floor(seconds / 3600);
-            let m = Math.floor((seconds % 3600) / 60);
-            let s = seconds % 60;
-
-            return (
-                String(h).padStart(2, "0") + ":" +
-                String(m).padStart(2, "0") + ":" +
-                String(s).padStart(2, "0")
-            );
-        }
-
-        function updateStats() {
-            const time = parseInt(localStorage.getItem("researchTime"), 10) || 0;
-            document.querySelector("#researchTimeStat .stat-value").textContent = formatTime(time);
-
-            document.querySelector(".stat-item:nth-child(5) .stat-value").textContent =
-                localStorage.getItem("bookmarkedDisorders") || 0;
-
-            document.getElementById("defectsDiscoveredValue").textContent =
-                Number(sessionStorage.getItem("defectsDiscovered")) || 0;
-
-            document.querySelector(".stat-item:nth-child(7) .stat-value").textContent =
-                localStorage.getItem("bookmarkedDatasets") || 0;
-        }
-
-        setInterval(() => {
-            let time = parseInt(localStorage.getItem("researchTime"), 10) || 0;
-            time++;
-            localStorage.setItem("researchTime", time);
+        // Just call updateStats once DOM is ready
+        document.addEventListener("DOMContentLoaded", () => {
             updateStats();
-        }, 1000);
-
-        updateStats();
+        });
     </script>
-
 </body>
-
 </html>
