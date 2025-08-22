@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angelman Syndrome</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pstyle.css">
+</head>
+
+<body class="fade-in">
+
+  <header>
+    <div class="profile-image-container">
+      <img src="/images/profile.jpg" alt="User Profile" class="profile-image" />
+      <a href="user" class="profile-button-link">
+        <button class="profile-button">User Profile</button>
+      </a>
+    </div>
+
+    <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
+    <h1 style="font-size: 60px; font-weight: 700;">Angelman Syndrome</h1>
+    <button id="bookmarkDisorderBtn"
+      class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700">
+      ⭐ Bookmark This Disorder
+    </button>
+  </header>
+
+  <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-8">
+    <!-- Main Toggle -->
+    <button id="mainToggleBtn"
+      class="w-full py-4 px-6 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 flex items-center justify-center space-x-3">
+      <span>Angelman Syndrome</span>
+      <svg id="mainArrowIcon" class="w-6 h-6 ml-2 transition-transform duration-300 transform rotate-0"
+        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+
+    <div id="mainContent" class="hidden transition-all duration-300 ease-in-out overflow-hidden">
+      <p class="text-gray-700 text-lg md:text-xl leading-relaxed text-center mb-8">
+        Angelman syndrome is a rare genetic disorder that primarily affects the nervous system. 
+        It is characterized by severe developmental delays, speech impairments, movement and 
+        balance problems, seizures, and a typically happy demeanor with frequent smiling and laughter. 
+        It is caused by a problem with the UBE3A gene on chromosome 15.
+      </p>
+    </div>
+
+    <!-- Symptoms Section -->
+    <div class="mt-8">
+      <h3 class="text-2xl font-bold text-gray-700 text-center mb-6">Common Symptoms</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-green-50 p-4 rounded-lg shadow-sm text-center">
+          <img src="/images/angelman1.jpg" alt="Developmental Delay" class="mx-auto rounded-md mb-2 max-h-48">
+          <p class="text-gray-700 text-sm">Severe developmental delays</p>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg shadow-sm text-center">
+          <img src="/images/angelman2.jpg" alt="Happy Demeanor" class="mx-auto rounded-md mb-2 max-h-48">
+          <p class="text-gray-700 text-sm">Frequent smiling and happy demeanor</p>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg shadow-sm text-center">
+          <img src="/images/angelman3.jpg" alt="Movement issues" class="mx-auto rounded-md mb-2 max-h-48">
+          <p class="text-gray-700 text-sm">Movement and balance disorders</p>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg shadow-sm text-center">
+          <img src="/images/angelman4.jpg" alt="Seizures" class="mx-auto rounded-md mb-2 max-h-48">
+          <p class="text-gray-700 text-sm">Epileptic seizures</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Country Data Section -->
+    <button id="countryToggleBtn"
+      class="w-full py-4 px-6 mt-8 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 flex items-center justify-center space-x-3">
+      <span>View Angelman Data by Country</span>
+      <svg id="countryArrowIcon" class="w-6 h-6 ml-2 transition-transform duration-300 transform rotate-0"
+        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+
+    <div id="countryContent" class="hidden transition-all duration-300 ease-in-out overflow-hidden">
+      <h3 class="text-2xl font-bold text-gray-700 text-center mb-8">Angelman Prevalence by Country (Dummy Data)</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="country-card bg-green-50 border border-green-200 rounded-lg">
+          <button class="country-toggle w-full flex items-center justify-between p-4 text-xl font-semibold text-green-800 bg-green-100">
+            <span>United States</span>
+            <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+          <div class="graph-content hidden p-4"><canvas id="usaChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Links -->
+    <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+      <h4 class="text-xl font-semibold text-gray-700 mb-4">Research Papers</h4>
+      <ul class="space-y-2">
+        <li><a href="https://example.com/angelman1" target="_blank" class="text-green-600 hover:underline">Neurological Features of Angelman Syndrome</a></li>
+        <li><a href="https://example.com/angelman2" target="_blank" class="text-green-600 hover:underline">UBE3A Gene Insights</a></li>
+      </ul>
+    </div>
+
+    <!-- Dataset Links -->
+    <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+      <h4 class="text-xl font-semibold text-gray-700 mb-4">Dataset Links</h4>
+      <ul class="space-y-2">
+        <li><a href="angelman_dataset_a.html" class="text-green-600 hover:underline">Angelman Dataset A</a></li>
+        <li><a href="angelman_dataset_b.html" class="text-green-600 hover:underline">Angelman Dataset B</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Genesis. All rights reserved.</p>
+  </footer>
+  <script src="/js/script.js"></script>
+  <script src="/js/graphs.js"></script>
+</body>
+</html>

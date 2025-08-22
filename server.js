@@ -195,9 +195,23 @@ app.get('/autism', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'autism.html'));
 });
 
+app.get('/angelman', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'angelman.html'));
+});
+
+app.get('/baber', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'baber.html'));
+});
+
+app.get('/brachydactyly', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'brachydactyly.html'));
+});
+
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
+
+
 
 app.get('/:searchTerm', (req, res) => {
   const searchTerm = req.params.searchTerm;

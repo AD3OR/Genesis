@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baber Syndrome</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pstyle.css">
+</head>
+
+<body class="fade-in" data-disorder="Baber Syndrome">
+
+    <header>
+        <div class="profile-image-container">
+            <img src="/images/profile.jpg" alt="User Profile" class="profile-image" />
+            <a href="user" class="profile-button-link">
+                <button class="profile-button">User Profile</button>
+            </a>
+        </div>
+        <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
+        <h1 style="font-size:60px;font-weight:700;">Baber Syndrome</h1>
+        <button id="bookmarkDisorderBtn"
+            class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700">
+            ⭐ Bookmark This Disorder
+        </button>
+    </header>
+
+    <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-8">
+
+        <!-- Main Toggle -->
+        <button id="mainToggleBtn"
+            class="w-full py-4 px-6 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 flex items-center justify-center space-x-3">
+            <span>Baber Syndrome</span>
+            <svg id="mainArrowIcon" class="w-6 h-6 ml-2 transition-transform transform rotate-0" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        <div id="mainContent" class="hidden">
+            <p class="text-gray-700 text-lg md:text-xl leading-relaxed text-center mb-8">
+                Baber Syndrome is a rare genetic condition characterized by developmental anomalies
+                and specific physical features. It affects growth, cognitive development,
+                and sometimes cardiac or skeletal systems. Research is ongoing to understand
+                its genetic underpinnings and long-term impact.
+            </p>
+        </div>
+
+        <!-- Symptoms Section -->
+        <section class="mt-10">
+            <h2 class="text-2xl font-bold text-center mb-6">Common Symptoms</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <img src="/images/baber_symptom1.jpg" class="rounded-lg shadow-md mx-auto" alt="Symptom 1">
+                    <p class="mt-2 text-gray-600">Distinct craniofacial features</p>
+                </div>
+                <div class="text-center">
+                    <img src="/images/baber_symptom2.jpg" class="rounded-lg shadow-md mx-auto" alt="Symptom 2">
+                    <p class="mt-2 text-gray-600">Delayed speech and motor skills</p>
+                </div>
+                <div class="text-center">
+                    <img src="/images/baber_symptom3.jpg" class="rounded-lg shadow-md mx-auto" alt="Symptom 3">
+                    <p class="mt-2 text-gray-600">Cardiac irregularities</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countries + Graphs -->
+        <button id="countryToggleBtn"
+            class="w-full py-4 px-6 mt-8 mb-6 bg-green-600 text-white font-bold text-xl rounded-lg shadow-md hover:bg-green-700 flex items-center justify-center space-x-3">
+            <span>View Baber Data by Country</span>
+            <svg id="countryArrowIcon" class="w-6 h-6 ml-2 transition-transform transform rotate-0" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        <div id="countryContent" class="hidden">
+            <h3 class="text-2xl font-bold text-gray-700 text-center mb-8">Baber Syndrome Prevalence by Country (Dummy
+                Data)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- USA -->
+                <div class="country-card bg-green-50 border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 text-xl font-semibold text-green-800 bg-green-100">
+                        <span>United States (USA)</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4">
+                        <canvas id="usaChart"></canvas>
+                    </div>
+                </div>
+                <!-- UK -->
+                <!-- Country 2: United Kingdom -->
+                <div class="country-card bg-green-50 rounded-lg shadow-sm overflow-hidden border border-green-200">
+                    <button
+                        class="country-toggle w-full flex items-center justify-between p-4 md:p-5 text-left text-xl font-semibold text-green-800 bg-green-100 hover:bg-green-200 transition-all rounded-t-lg">
+                        <span>United Kingdom (UK)</span>
+                        <svg class="arrow-icon w-6 h-6 transition-transform duration-300 transform rotate-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="graph-content hidden p-4 md:p-5">
+                        <canvas id="ukChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Links -->
+            <div class="mt-8 pt-6 border-t text-center">
+                <h4 class="text-xl font-semibold text-gray-700 mb-4">Latest Research</h4>
+                <ul class="space-y-2">
+                    <li><a href="https://example.com/baber-paper-1" target="_blank"
+                            class="text-green-600 hover:underline text-sm">"Genetic Insights into Baber Syndrome"</a>
+                    </li>
+                    <li><a href="https://example.com/baber-paper-2" target="_blank"
+                            class="text-green-600 hover:underline text-sm">"Cognitive and Developmental Aspects"</a>
+                    </li>
+                    <li><a href="https://example.com/baber-paper-3" target="_blank"
+                            class="text-green-600 hover:underline text-sm">"Baber Syndrome and Cardiac Risks"</a></li>
+                </ul>
+            </div>
+
+            <!-- Datasets -->
+            <div class="mt-8 pt-6 border-t text-center">
+                <h4 class="text-xl font-semibold text-gray-700 mb-4">Dataset Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="baberA" class="text-green-600 hover:underline text-sm">Baber Dataset A</a></li>
+                    <li><a href="baberB" class="text-green-600 hover:underline text-sm">Baber Dataset B</a></li>
+                    <li><a href="baberC" class="text-green-600 hover:underline text-sm">Baber Dataset C</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Genesis. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/graphs.js"></script>
+    <script>
+        const disorderKey = "baber_disorder";
+        const btn = document.getElementById("bookmarkDisorderBtn");
+
+        function updateButton() {
+            btn.textContent = localStorage.getItem(disorderKey) === "true" ? "★ Unbookmark Disorder" : "⭐ Bookmark This Disorder";
+        }
+
+        btn.addEventListener("click", () => {
+            let count = parseInt(localStorage.getItem("bookmarkedDisorders"), 10) || 0;
+            if (localStorage.getItem(disorderKey) === "true") {
+                localStorage.removeItem(disorderKey);
+                localStorage.setItem("bookmarkedDisorders", Math.max(0, count - 1));
+                toggleBookmarkDisorder("Baber Syndrome", "baber");
+            } else {
+                localStorage.setItem(disorderKey, "true");
+                localStorage.setItem("bookmarkedDisorders", count + 1);
+                toggleBookmarkDisorder("Baber Syndrome", "baber");
+            }
+            updateButton();
+        });
+        updateButton();
+
+        function toggleBookmarkDisorder(name, url) {
+            let list = JSON.parse(localStorage.getItem("bookmarkedDisordersList") || "[]");
+            const i = list.findIndex(d => d.url === url);
+            if (i === -1) { list.push({ name, url }); } else { list.splice(i, 1); }
+            localStorage.setItem("bookmarkedDisordersList", JSON.stringify(list));
+        }
+    </script>
+</body>
+
+</html>
