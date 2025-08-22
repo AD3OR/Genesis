@@ -63,10 +63,17 @@
                         <span class="stat-label">Bookmarked Testcases:</span>
                         <span class="stat-value">12</span>
                     </div>
-                    <div class="stat-item">
+
+                    <div class="stat-item dropdown" id="bookmarkedDatasetsStat">
                         <span class="stat-label">Bookmarked Datasets:</span>
-                        <span class="stat-value">5</span>
+                        <span class="stat-value">0</span>
+
+                        <!-- Dropdown menu (initially hidden) -->
+                        <div class="dropdown-menu hidden">
+                            <ul id="bookmarkedDatasetsList"></ul>
+                        </div>
                     </div>
+
                     <div class="stat-item">
                         <span class="stat-label">Defects Discovered:</span>
                         <span class="stat-value" id="defectsDiscoveredValue">0</span>
@@ -120,4 +127,5 @@
         });
     </script>
 </body>
+
 </html>

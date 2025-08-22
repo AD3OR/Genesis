@@ -96,25 +96,44 @@ function updateStats() {
     const time = parseInt(localStorage.getItem("researchTime"), 10) || 0;
     document.querySelector("#researchTimeStat .stat-value").textContent = formatTime(time);
 
-    // Bookmarked Disorders Count
+    // --- Bookmarked Disorders ---
     const disorders = JSON.parse(localStorage.getItem("bookmarkedDisordersList") || "[]");
     document.querySelector("#bookmarkedDisordersStat .stat-value").textContent = disorders.length;
 
-    // Populate dropdown links
-    const listEl = document.getElementById("bookmarkedDisordersList");
-    listEl.innerHTML = "";
+    // Populate disorders dropdown
+    const disorderListEl = document.getElementById("bookmarkedDisordersList");
+    disorderListEl.innerHTML = "";
     disorders.forEach(d => {
         const li = document.createElement("li");
         li.innerHTML = `<a href="${d.url}">${d.name}</a>`;
-        listEl.appendChild(li);
+        disorderListEl.appendChild(li);
     });
 
-    // Defects
+    // --- Defects ---
     document.getElementById("defectsDiscoveredValue").textContent =
         Number(sessionStorage.getItem("defectsDiscovered")) || 0;
 
-    // Datasets
-    document.querySelector(".stat-item:nth-child(7) .stat-value").textContent =
-        localStorage.getItem("bookmarkedDatasets") || 0;
+    // --- Bookmarked Datasets ---
+    const datasets = JSON.parse(localStorage.getItem("bookmarkedDatasetsList") || "[]");
+    document.querySelector("#bookmarkedDatasetsStat .stat-value").textContent = datasets.length;
+
+    // Populate datasets dropdown
+    const datasetListEl = document.getElementById("bookmarkedDatasetsList");
+    datasetListEl.innerHTML = "";
+    datasets.forEach(d => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="${d.url}">${d.name}</a>`;
+        datasetListEl.appendChild(li);
+    });
 }
+
+// Auto-increment research time every second
+setInterval(() => {
+    let time = parseInt(localStorage.getItem("researchTime"), 10) || 0;
+    time++;
+    localStorage.setItem("researchTime", time);
+    updateStats();
+}, 1000);
+
+
 

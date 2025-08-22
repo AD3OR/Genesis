@@ -3,19 +3,19 @@ const path = require('path');
 const router = express.Router();
 
 
-router.get('/pasp.html', (req, res) => {
+router.get('/pasp', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/pasp.html'));
 });
 
-router.get('/pphen.html', (req, res) => {
+router.get('/pphen', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/pphen.html'));
 });
 
-router.get('/pbrac.html', (req, res) => {
+router.get('/pbrac', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/pbrac.html'));
 });
 
-router.get('/pgene.html', (req, res) => {
+router.get('/pgene', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/pgene.html'));
 });
 

@@ -14,10 +14,16 @@
   <header>
     <img src="/images/sym.png" alt="Genesis Symbol" class="center-image" />
     <h1>Autism Dataset A</h1>
-    <button id="bookmarkDatasetBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">
+
+    <!-- Bookmark button -->
+    <button id="bookmarkDatasetBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700"
+      data-dataset-key="autism_dataset_a" data-dataset-name="Autism Dataset A" data-dataset-url="asperger.html">
       📂 Bookmark This Dataset
     </button>
-
+    <!-- New Download button -->
+    <button id="downloadDatasetBtn" class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700">
+      ⬇️ Download Dataset
+    </button>
   </header>
 
   <!-- Main content -->
@@ -41,7 +47,7 @@
 
   <!-- Script to load dataset -->
   <script>
-    fetch('/autism')
+    fetch('/autismdata')
       .then(res => res.json())
       .then(data => {
         const headerRow = document.getElementById('headerRow');
@@ -74,36 +80,10 @@
       })
       .catch(err => console.error('Error loading dataset:', err));
   </script>
-  <script>
-    const datasetKey = "autism_dataset_a"; // unique ID for this dataset
-    const btn = document.getElementById("bookmarkDatasetBtn");
 
-    function updateDatasetBtn() {
-      if (localStorage.getItem(datasetKey) === "true") {
-        btn.textContent = "📂 Unbookmark Dataset";
-      } else {
-        btn.textContent = "📂 Bookmark This Dataset";
-      }
-    }
-
-    btn.addEventListener("click", () => {
-      let count = parseInt(localStorage.getItem("bookmarkedDatasets"), 10) || 0;
-
-      if (localStorage.getItem(datasetKey) === "true") {
-        localStorage.removeItem(datasetKey);
-        localStorage.setItem("bookmarkedDatasets", count - 1);
-      } else {
-        localStorage.setItem(datasetKey, "true");
-        localStorage.setItem("bookmarkedDatasets", count + 1);
-      }
-      updateDatasetBtn();
-    });
-
-    updateDatasetBtn();
-  </script>
-
-
-
+  <!-- Shared logic -->
+  <script src="/js/datasetbookmark.js"></script>
+  <script src="/js/datasetdownload.js"></script>
 </body>
 
 </html>

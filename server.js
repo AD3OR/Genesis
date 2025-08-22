@@ -105,7 +105,7 @@ app.get('/phenotypes', (req, res) => {
 // End
 
 // reading arff (converted to txt)
-app.get('/autism', (req, res) => {
+app.get('/autismdata', (req, res) => {
   const filePath = path.join(__dirname, 'autismdata.txt');
 
   fs.readFile(filePath, 'utf8', (err, content) => {
@@ -135,6 +135,7 @@ app.get('/autism', (req, res) => {
 });
 // end
 
+
 // Reading RESEARCHERS
 app.get('/researchers', (req, res) => {
   const filePath = path.join(__dirname, 'researchers.json');
@@ -163,6 +164,18 @@ app.get('/researchers', (req, res) => {
 
 // end
 
+// dataset download function
+app.get('/download/autismdata.txt', (req, res) => {
+  const filePath = path.join(__dirname, 'autismdata.txt');
+  // Use res.download to send the file to the user
+  res.download(filePath, 'autismdata.txt', (err) => {
+    if (err) {
+      console.error('Error downloading file:', err);
+      res.status(500).send('Could not download the file.');
+    }
+  });
+});
+
 
 app.use('/', alpharoutes);
 app.use('/', partroutes);
@@ -174,17 +187,24 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get('/asperger.html', (req, res) => {
+app.get('/asperger', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'asperger.html'));
 });
 
-app.get('/aspergerr.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'aspergerr.html'));
+app.get('/autism', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'autism.html'));
 });
 
-app.get('/login.html', (req, res) => {
+app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'login.html'));
 });
+
+app.get('/:searchTerm', (req, res) => {
+  const searchTerm = req.params.searchTerm;
+  // Here, you would implement logic to serve a page based on the search term.
+  // For this example, we'll just send a generic message.
+  res.sendFile(path.join(__dirname, 'views', `${searchTerm}.html`));
+})
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
